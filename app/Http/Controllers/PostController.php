@@ -40,7 +40,7 @@ class PostController extends Controller implements HasMiddleware
 
         $post = Post::create($fields);
 
-        return ['post' => $post];
+        return  $post;
     }
 
     /**
