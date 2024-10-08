@@ -34,21 +34,18 @@ class PostController extends Controller implements HasMiddleware
     {
         $fields = $request->validate([
             'title' => 'required|max:255',
-            'body' => 'required',
-            'password' => 'required'
+            'body' => 'required'
+
+
         ]);
 
-        //$userId = $request->user()->id;
-        // $post = Post::create([
-        //     'user_id' => $userId,        // Piešķiriet user_id autentificētā lietotāja ID
-        //     'title' => $fields['title'],
-        //     'body' => $fields['body']
-        // ]);
+        //return $request->user()->posts();
+        $post = $request->user()->posts()->create($fields);
 
-        $post = Post::create($fields);
+        //$post = Post::create($fields);
 
-        return  $post;
-        
+        return $post;
+
     }
 
     /**
